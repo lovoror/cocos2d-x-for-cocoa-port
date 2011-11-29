@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'HelloWord' target in the 'HelloWord' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/foundation.h>
+    #import <Cocoa/Cocoa.h>
+#endif
