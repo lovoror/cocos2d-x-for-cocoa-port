@@ -34,6 +34,9 @@
  */
 
 #import <Availability.h>
+#if defined(__MAC_10_7) && __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_7
+#import <AVFoundation/AVFoundation.h>
+#endif // __MAC_10_7
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
 
@@ -53,6 +56,9 @@ extern OSStatus AudioSessionGetProperty(UInt32 inID, UInt32 *ioDataSize, void *o
 #ifdef __cplusplus
 }
 #endif
+
+#if !defined(__MAC_10_7) || __MAC_OS_X_VERSION_MAX_ALLOWED < __MAC_10_7
+
 /**
  Based on AVAudioPlayer.h header in AVFoundation headers
  */
@@ -156,6 +162,7 @@ extern OSStatus AudioSessionGetProperty(UInt32 inID, UInt32 *ioDataSize, void *o
 - (void)audioPlayerEndInterruption:(AVAudioPlayer *)player;
 @end
 
+#endif // __MAC_10_7
 
 /**
  Taken from AVAudioSession.h header in AVFoundation headers
