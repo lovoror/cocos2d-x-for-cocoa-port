@@ -42,6 +42,8 @@ OSStatus AudioSessionGetProperty(UInt32 inID, UInt32 *ioDataSize, void *outData)
 	return 0;
 }    
 
+#if !defined(__MAC_10_7) || __MAC_OS_X_VERSION_MAX_ALLOWED < __MAC_10_7
+
 @implementation AVAudioPlayer
 
 @synthesize delegate, numberOfChannels, pan, deviceCurrentTime, url, data;
@@ -154,6 +156,8 @@ OSStatus AudioSessionGetProperty(UInt32 inID, UInt32 *ioDataSize, void *outData)
 - (float)peakPowerForChannel:(NSUInteger)channelNumber{return 0.0f;} 
 - (float)averagePowerForChannel:(NSUInteger)channelNumber{return 0.0f;}
 @end
+
+#endif // __MAC_10_7
 
 /**
  A "do nothing" implementation - AVAudioSession is not really relevant to Mac OS X.
